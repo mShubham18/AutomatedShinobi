@@ -50,14 +50,12 @@ def generate_voice(fact):
             # Decode base64 audio data
             audio_mp3 = base64.b64decode(response_json["audio_data"])
             # Save the audio content to a file
-            #return audio_mp3
-            with open("output.mp3", "wb") as audio_file:
-                audio_file.write(audio_mp3)
+            return audio_mp3
+
+            #with open("output.mp3", "wb") as audio_file:
+            #    audio_file.write(audio_mp3)
         else:
             print("Error: 'audio_data' not found in the response.")
     else:
         print(f"Error: {response.status_code}")
         print(response.text)
-
-response_str = generate_response()
-generate_voice(response_str)

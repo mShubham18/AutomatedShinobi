@@ -2,3 +2,4 @@ numpy
 pandas
 google-generativeai
 dotenv
+duckduckgo_search
