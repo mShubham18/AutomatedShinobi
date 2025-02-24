@@ -6,23 +6,23 @@ from moviepy.config import change_settings
 change_settings({"IMAGEMAGICK_BINARY": r"C:\Program Files\ImageMagick-7.1.1-Q16-HDRI\magick.exe"})
 
 
-
 def load_images(folder="downloaded_images"):
     image_files = sorted(os.listdir(folder))  # Sort to maintain order
     loaded_images = [Image.open(os.path.join(folder, img)) for img in image_files]
-    
+
     print(f"Loaded {len(loaded_images)} images")
     return loaded_images  # Returns a list of PIL objects
+
 
 # Test loading images
 loaded_images = load_images()
 img_list = loaded_images
 
-
 import tempfile
 import cv2
 import numpy as np
 from moviepy.editor import ImageClip
+
 
 def process_images(image_list, voiceover_duration, max_duration_per_image=4):
     """
@@ -56,8 +56,8 @@ def process_images(image_list, voiceover_duration, max_duration_per_image=4):
     return clips
 
 
-
 from moviepy.editor import AudioFileClip, CompositeAudioClip
+
 
 def process_audio(voiceover_path, bgm_path):
     """
@@ -70,47 +70,24 @@ def process_audio(voiceover_path, bgm_path):
     return final_audio
 
 
-
-import whisperx
-from moviepy.video.tools.subtitles import SubtitlesClip
-from moviepy.editor import TextClip
-
-def generate_subtitles(voiceover_path):
-    """
-    Uses WhisperX to generate subtitles synced to the voiceover.
-    """
-    model = whisperx.load_model("base", device="cpu", compute_type="float32")
-    audio = whisperx.load_audio(voiceover_path)
-    result = model.transcribe(audio)
-
-    subs = []
-    for word_data in result['segments']:
-        word, start, end = word_data['text'], word_data['start'], word_data['end']
-        subs.append(((start, end), word))  # ✅ Correct format: ((start, end), text)
-
-    return SubtitlesClip(subs, make_textclip=lambda txt: TextClip(txt, fontsize=50, color="white", font="Impact"))
+from moviepy.editor import concatenate_videoclips, CompositeVideoClip
 
 
-
-from moviepy.editor import concatenate_videoclips
-from moviepy.editor import CompositeVideoClip
 def create_final_video(images, voiceover_path, bgm_path, output_path="shorts/final_video.mp4"):
     """
-    Combines images, voiceover, background music, and subtitles into a final video.
+    Combines images, voiceover, and background music into a final video.
     """
     voiceover = AudioFileClip(voiceover_path)
     clips = process_images(images, voiceover.duration)
-    
+
     # Concatenate video clips
     video = concatenate_videoclips(clips, method="compose")
     video = video.set_audio(process_audio(voiceover_path, bgm_path))
-    
-    # Add subtitles
-    subtitles = generate_subtitles(voiceover_path)
-    final_video = CompositeVideoClip([video, subtitles])
 
     # Save output
     os.makedirs("shorts", exist_ok=True)
-    final_video.write_videofile(output_path, fps=24, codec="libx264")
+    video.write_videofile(output_path, fps=24, codec="libx264")
 
-create_final_video(images=img_list,voiceover_path="outputs/output.mp3",bgm_path="Resources/bgm.mp3")
+
+# Run the final video generation
+#create_final_video(images=img_list, voiceover_path="outputs/output.mp3", bgm_path="Resources/bgm.mp3")
