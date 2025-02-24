@@ -1,4 +1,4 @@
-from generate_response import generate_response
+from generate_response import generate_fact
 import requests
 import os
 from dotenv import load_dotenv
@@ -20,7 +20,7 @@ api_url = "https://api.sws.speechify.com/v1/audio/speech"
 
 response_str = "Remember when Aizen was all about transcending? Did you know that in the light novels, it's revealed that his ultimate goal wasn't just power, but to create a key, a king's key capable of opening the gates to the Royal Realm without needing the ritual involving the souls of one hundred thousand people from Rukongai. In other words, Aizen wanted to dethrone the Soul King not for absolute power, but to change the very system. He wanted to find a different way to open the realm. This ambition, shrouded in his twisted methods, makes Aizen less of a power-hungry villain and more of a revolutionary, albeit a deeply flawed and dangerous one."
 #response_str = html.escape(response_str)  # Escape special characters
-def generate_voice(fact):
+def generate_voice(fact,path):
 
     
 
@@ -50,12 +50,13 @@ def generate_voice(fact):
             # Decode base64 audio data
             audio_mp3 = base64.b64decode(response_json["audio_data"])
             # Save the audio content to a file
-            return audio_mp3
+            #return audio_mp3
 
-            #with open("output.mp3", "wb") as audio_file:
-            #    audio_file.write(audio_mp3)
+            with open(path, "wb") as audio_file:
+                audio_file.write(audio_mp3)
         else:
             print("Error: 'audio_data' not found in the response.")
     else:
         print(f"Error: {response.status_code}")
         print(response.text)
+

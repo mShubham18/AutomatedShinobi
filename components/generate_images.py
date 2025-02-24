@@ -22,7 +22,11 @@ class ImageGeneration:
         I only want the response, I do not need any salutation.
         """
         keywords = self.model.generate_content(prompt)
-        return keywords.text
+        keywords_string=str(keywords.text)
+        keywords_string = keywords_string.replace(",","")
+        keywords_string=keywords_string.replace("\n","")
+
+        return keywords_string
 
     def get_duckduckgo_images(self, query, num_images=30):
         image_list = []
@@ -83,10 +87,10 @@ class ImageGeneration:
 
 
 # Example Usage
-obj = ImageGeneration()
+"""obj = ImageGeneration()
 query = "Bleach Aizen Soul King Royal Realm"
 excerpt = "Remember when Aizen was all about transcending? Did you know that in the light novels, it's revealed that his ultimate goal wasn't just power, but to create a key, a king's key capable of opening the gates to the Royal Realm without needing the ritual involving the souls of one hundred thousand people from Rukongai. In other words, Aizen wanted to dethrone the Soul King not for absolute power, but to change the very system. He wanted to find a different way to open the realm."
 
 keywords = obj.generate_image(excerpt)
 mobile_images = obj.get_duckduckgo_images(keywords, num_images=20)
-print(f"Total Processed Images: {len(mobile_images)}")
+print(f"Total Processed Images: {len(mobile_images)}")"""
