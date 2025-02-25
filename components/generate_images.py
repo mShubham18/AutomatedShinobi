@@ -2,7 +2,7 @@ import io
 import requests  # Use requests instead of urllib
 from duckduckgo_search import DDGS
 from PIL import Image
-from model_configuration import model_config
+from components.model_configuration import model_config
 import os
 from dotenv import load_dotenv
 load_dotenv()

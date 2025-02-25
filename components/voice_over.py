@@ -1,4 +1,4 @@
-from generate_response import generate_fact
+from components.generate_response import generate_fact
 import requests
 import os
 from dotenv import load_dotenv
