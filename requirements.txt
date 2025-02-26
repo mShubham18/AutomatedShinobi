@@ -1,14 +1,14 @@
 numpy
 pandas
 google-generativeai
-dotenv
+python-dotenv  # Correct package name for dotenv
 duckduckgo_search
 whisper
-cv2
+opencv-python  # Replaces cv2 (use opencv-python-headless for servers)
 moviepy
 tqdm
-PIL
+Pillow  # Correct package name for PIL
 google-auth
-google-auth-oauthlib 
-google-auth-httplib2 
+google-auth-oauthlib
+google-auth-httplib2
 google-api-python-client
