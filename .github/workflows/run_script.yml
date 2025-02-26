@@ -28,9 +28,10 @@ jobs:
           sudo apt-get update
           sudo apt-get install -y ffmpeg imagemagick
 
-      # ✅ Set ImageMagick path manually
+        # ✅ Set ImageMagick Path Manually
       - name: Set ImageMagick Path
         run: echo "IMAGEMAGICK_BINARY=/usr/bin/magick" >> $GITHUB_ENV
+
 
       # ✅ Run the Script
       - name: Run the Script

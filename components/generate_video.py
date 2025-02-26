@@ -1,10 +1,11 @@
 from PIL import Image
 import os
 
-from moviepy.config import change_settings
+"""from moviepy.config import change_settings
 
 change_settings({"IMAGEMAGICK_BINARY": r"C:\Program Files\ImageMagick-7.1.1-Q16-HDRI\magick.exe"})
-
+"""
+os.environ["IMAGEMAGICK_BINARY"] = "/usr/bin/magick"
 
 def load_images(folder="downloaded_images"):
     image_files = sorted(os.listdir(folder))  # Sort to maintain order
