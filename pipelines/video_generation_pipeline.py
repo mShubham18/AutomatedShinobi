@@ -20,23 +20,26 @@ PATH_UNTRANSCRIBED = "shorts/initial_video_untranscribed.mp4"
 PATH_MODEL = "base"
 PATH_TRANSCRIBED = "shorts/transcribed.mp4"
 """
-fact = generate_fact()
-generate_voice(fact,PATH_VOICE_OVER)
+def generate_video_pipeline():
+    fact = generate_fact()
+    generate_voice(fact,PATH_VOICE_OVER)
 
-img_object = ImageGeneration()
+    img_object = ImageGeneration()
 
-keywords = img_object.generate_image(fact)
-images_list = img_object.get_duckduckgo_images(keywords)
-
-
-
-create_final_video(images_list,PATH_VOICE_OVER,PATH_BGM,PATH_UNTRANSCRIBED)
+    keywords = img_object.generate_image(fact)
+    images_list = img_object.get_duckduckgo_images(keywords)
 
 
-transcriber = VideoTranscriber(PATH_MODEL,PATH_UNTRANSCRIBED)
-transcriber.extract_audio()
-transcriber.transcribe_video()
-transcriber.create_video(PATH_TRANSCRIBED)
+
+    create_final_video(images_list,PATH_VOICE_OVER,PATH_BGM,PATH_UNTRANSCRIBED)
+
+
+    transcriber = VideoTranscriber(PATH_MODEL,PATH_UNTRANSCRIBED)
+    transcriber.extract_audio()
+    transcriber.transcribe_video()
+    transcriber.create_video(PATH_TRANSCRIBED)
+
+    return fact
 
 
 

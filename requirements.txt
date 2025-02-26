@@ -3,3 +3,12 @@ pandas
 google-generativeai
 dotenv
 duckduckgo_search
+whisper
+cv2
+moviepy
+tqdm
+PIL
+google-auth
+google-auth-oauthlib 
+google-auth-httplib2 
+google-api-python-client
