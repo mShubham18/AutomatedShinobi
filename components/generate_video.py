@@ -1,6 +1,5 @@
 from PIL import Image
 import os
-
 """from moviepy.config import change_settings
 
 change_settings({"IMAGEMAGICK_BINARY": r"C:\Program Files\ImageMagick-7.1.1-Q16-HDRI\magick.exe"})
@@ -22,7 +21,8 @@ img_list = loaded_images
 import tempfile
 import cv2
 import numpy as np
-from moviepy.editor import ImageClip
+#from moviepy.editor import ImageClip
+from moviepy import *
 
 
 def process_images(image_list, voiceover_duration, max_duration_per_image=4):

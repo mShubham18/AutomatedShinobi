@@ -5,7 +5,7 @@ python-dotenv  # For managing environment variables
 duckduckgo_search
 whisper
 opencv-python-headless  # Optimized for servers (instead of opencv-python)
-moviepy
+moviepy==1.0.3
 tqdm
 Pillow  # Correct package name for PIL
 google-auth

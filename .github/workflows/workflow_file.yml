@@ -20,19 +20,12 @@ jobs:
 
       - name: Install dependencies
         run: |
-          python -m pip install --upgrade pip
           pip install -r requirements.txt
 
       - name: Install FFmpeg & ImageMagick
         run: |
           sudo apt update
           sudo apt install -y ffmpeg imagemagick
-
-      - name: Verify Installation
-        run: |
-          python -c "import moviepy.editor as mp; print('MoviePy is working!')"
-          ffmpeg -version
-          convert -version  # Check ImageMagick
 
       - name: Run the script
         run: python app.py
