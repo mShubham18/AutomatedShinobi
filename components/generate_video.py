@@ -7,7 +7,7 @@ change_settings({"IMAGEMAGICK_BINARY": r"C:\Program Files\ImageMagick-7.1.1-Q16-
 """
 os.environ["IMAGEMAGICK_BINARY"] = "/usr/bin/magick"
 
-def load_images(folder="downloaded_images"):
+"""def load_images(folder="downloaded_images"):
     image_files = sorted(os.listdir(folder))  # Sort to maintain order
     loaded_images = [Image.open(os.path.join(folder, img)) for img in image_files]
 
@@ -18,7 +18,7 @@ def load_images(folder="downloaded_images"):
 # Test loading images
 loaded_images = load_images()
 img_list = loaded_images
-
+"""
 import tempfile
 import cv2
 import numpy as np
