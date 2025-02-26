@@ -26,7 +26,14 @@ jobs:
       - name: Install Python Dependencies
         run: |
           pip install --upgrade pip
+          pip install --force-reinstall moviepy
           pip install -r requirements.txt
+
+      - name: Verify Installed Packages
+        run: pip list  # Debugging step to check installed packages
+
+      - name: Test MoviePy Import
+        run: python -c "import moviepy.editor"  # Ensures MoviePy is installed properly
 
       - name: Set up ImageMagick
         run: |
