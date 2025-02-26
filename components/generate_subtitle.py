@@ -2,7 +2,8 @@ import whisper
 import os
 import shutil
 import cv2
-from moviepy.editor import ImageSequenceClip, AudioFileClip, VideoFileClip
+from moviepy import *
+#from moviepy.editor import ImageSequenceClip, AudioFileClip, VideoFileClip
 from tqdm import tqdm
 
 FONT = cv2.FONT_HERSHEY_TRIPLEX
