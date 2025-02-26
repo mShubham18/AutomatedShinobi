@@ -5,20 +5,13 @@ import tempfile
 import cv2
 import numpy as np
 #from moviepy.editor import ImageClip
+os.environ["IMAGEMAGICK_BINARY"] = "/usr/bin/magick"
 from moviepy import *
-
-from moviepy.video.io.ImageSequenceClip import ImageClip
-from moviepy.audio.io.AudioFileClip import AudioFileClip
-from moviepy.audio.AudioClip import CompositeAudioClip
-from moviepy.video.compositing.concatenate import concatenate_videoclips
-
-
 
 """from moviepy.config import change_settings
 
 change_settings({"IMAGEMAGICK_BINARY": r"C:\Program Files\ImageMagick-7.1.1-Q16-HDRI\magick.exe"})
 """
-os.environ["IMAGEMAGICK_BINARY"] = "/usr/bin/magick"
 
 """def load_images(folder="downloaded_images"):
     image_files = sorted(os.listdir(folder))  # Sort to maintain order

@@ -2,6 +2,7 @@ import whisper
 import os
 import shutil
 import cv2
+os.environ["IMAGEMAGICK_BINARY"] = "/usr/bin/magick"
 from moviepy import *
 #from moviepy.editor import ImageSequenceClip, AudioFileClip, VideoFileClip
 from tqdm import tqdm
