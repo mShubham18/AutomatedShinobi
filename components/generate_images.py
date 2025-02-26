@@ -6,7 +6,7 @@ from components.model_configuration import model_config
 import os
 from dotenv import load_dotenv
 load_dotenv()
-MIN_IMAGES = int(os.getenv("MIN_IMAGES"))
+MIN_IMAGES = int(os.getenv("MIN_IMAGES","5"))
 
 class ImageGeneration:
     def __init__(self):
