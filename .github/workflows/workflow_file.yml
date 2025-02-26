@@ -32,6 +32,9 @@ jobs:
         run: |
           which convert
           convert -version
+      
+       -name: Ensure Required Directories Exist
+        run: mkdir -p outputs shorts  # Create both folders if they don't exist
 
       - name: Run the script
         run: python app.py
@@ -52,3 +55,7 @@ jobs:
           YT_TOKEN_URI: ${{ secrets.YT_TOKEN_URI }}
           YT_REDIRECT_URI: ${{ secrets.YT_REDIRECT_URI }}
           YT_REFRESH_TOKEN: ${{ secrets.YT_REFRESH_TOKEN }}
+      
+      - name: Clean up Generated Directories
+        if: always()  # Ensures cleanup even if the script fails
+        run: rm -rf outputs shorts  # Delete both folders after execution
