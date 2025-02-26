@@ -33,7 +33,7 @@ jobs:
           which convert
           convert -version
       
-       -name: Ensure Required Directories Exist
+      - name: Ensure Required Directories Exist
         run: mkdir -p outputs shorts  # Create both folders if they don't exist
 
       - name: Run the script
