@@ -7,6 +7,13 @@ import numpy as np
 #from moviepy.editor import ImageClip
 from moviepy import *
 
+from moviepy.video.io.ImageSequenceClip import ImageClip
+from moviepy.audio.io.AudioFileClip import AudioFileClip
+from moviepy.audio.AudioClip import CompositeAudioClip
+from moviepy.video.compositing.concatenate import concatenate_videoclips
+
+
+
 """from moviepy.config import change_settings
 
 change_settings({"IMAGEMAGICK_BINARY": r"C:\Program Files\ImageMagick-7.1.1-Q16-HDRI\magick.exe"})
