@@ -7,7 +7,7 @@ on:
 
 jobs:
   run-script:
-    runs-on: ubuntu-latest  # GitHub's virtual machine OS
+    runs-on: ubuntu-latest
 
     steps:
       - name: Checkout Repository
@@ -18,30 +18,32 @@ jobs:
         with:
           python-version: "3.12"
 
-      - name: Install Dependencies
-        run: |
-          pip install -r requirements.txt
-
-      # ✅ Install FFmpeg and ImageMagick for Ubuntu (GitHub VM)
-      - name: Install FFmpeg and ImageMagick
+      - name: Install System Dependencies
         run: |
           sudo apt-get update
           sudo apt-get install -y ffmpeg imagemagick
 
-        # ✅ Set ImageMagick Path Manually
-      - name: Set ImageMagick Path
-        run: echo "IMAGEMAGICK_BINARY=/usr/bin/magick" >> $GITHUB_ENV
+      - name: Install Python Dependencies
+        run: |
+          pip install --upgrade pip
+          pip install -r requirements.txt
 
+      - name: Set up ImageMagick
+        run: |
+          echo "Setting ImageMagick policy..."
+          sudo sed -i 's/none/read|write/g' /etc/ImageMagick-6/policy.xml || true
+          sudo sed -i 's/none/read|write/g' /etc/ImageMagick-7/policy.xml || true
 
-      # ✅ Run the Script
       - name: Run the Script
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
           SPEECHIFY_API_KEY: ${{ secrets.SPEECHIFY_API_KEY }}
           API_URL: ${{ secrets.API_URL }}
           MIN_IMAGES: ${{ secrets.MIN_IMAGES }}
+
           GOOGLE_API_KEY: ${{ secrets.GOOGLE_API_KEY }}
           GOOGLE_CSE_ID: ${{ secrets.GOOGLE_CSE_ID }}
+
           YT_CLIENT_ID: ${{ secrets.YT_CLIENT_ID }}
           YT_CLIENT_SECRET: ${{ secrets.YT_CLIENT_SECRET }}
           YT_PROJECT_ID: ${{ secrets.YT_PROJECT_ID }}
@@ -49,5 +51,5 @@ jobs:
           YT_TOKEN_URI: ${{ secrets.YT_TOKEN_URI }}
           YT_REDIRECT_URI: ${{ secrets.YT_REDIRECT_URI }}
           YT_REFRESH_TOKEN: ${{ secrets.YT_REFRESH_TOKEN }}
-          IMAGEMAGICK_BINARY: "/usr/bin/magick"
+
         run: python app.py
