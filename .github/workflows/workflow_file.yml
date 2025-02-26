@@ -26,10 +26,12 @@ jobs:
         run: |
           sudo apt update
           sudo apt install -y ffmpeg imagemagick
-          echo "IMAGEMAGICK_BINARY=/usr/bin/convert" >> $GITHUB_ENV  # Set ImageMagick path
+          echo "IMAGEMAGICK_BINARY=/usr/bin/convert" >> $GITHUB_ENV  # Fix ImageMagick path
 
-      - name: Debug ImageMagick Path
-        run: which convert && convert -version  # Check if ImageMagick is correctly installed
+      - name: Verify ImageMagick Installation
+        run: |
+          which convert
+          convert -version
 
       - name: Run the script
         run: python app.py
