@@ -17,8 +17,11 @@ from moviepy import *
 
 
 
-from moviepy.editor import concatenate_videoclips, CompositeVideoClip
-from moviepy.editor import AudioFileClip, CompositeAudioClip
+from moviepy.video.compositing.concatenate import concatenate_videoclips
+from moviepy.video.compositing.CompositeVideoClip import CompositeVideoClip
+from moviepy.audio.io.AudioFileClip import AudioFileClip
+from moviepy.audio.AudioClip import CompositeAudioClip
+
 
 """from moviepy.config import change_settings
 

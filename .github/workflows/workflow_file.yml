@@ -35,6 +35,11 @@ jobs:
       
       - name: Ensure Required Directories Exist
         run: mkdir -p outputs shorts  # Create both folders if they don't exist
+        
+      - name: Set ImageMagick Path
+        run: |
+          echo "IMAGEMAGICK_BINARY=/usr/bin/magick" >> $GITHUB_ENV
+          export IMAGEMAGICK_BINARY=/usr/bin/magick
 
       - name: Run the script
         run: python app.py
