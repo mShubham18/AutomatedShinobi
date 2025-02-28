@@ -6,8 +6,20 @@ import cv2
 import numpy as np
 #from moviepy.editor import ImageClip
 #os.environ["IMAGEMAGICK_BINARY"] = "/usr/bin/magick"
+
+from moviepy.config import change_settings
+import os
+
+# Auto-detect ImageMagick path
+change_settings({"IMAGEMAGICK_BINARY": "/usr/bin/magick"})
+
 from moviepy import *
-from moviepy.editor import AudioFileClip
+
+
+
+from moviepy.editor import concatenate_videoclips, CompositeVideoClip
+from moviepy.editor import AudioFileClip, CompositeAudioClip
+
 """from moviepy.config import change_settings
 
 change_settings({"IMAGEMAGICK_BINARY": r"C:\Program Files\ImageMagick-7.1.1-Q16-HDRI\magick.exe"})
@@ -74,6 +86,7 @@ def process_audio(voiceover_path, bgm_path):
 
 
 #from moviepy.editor import concatenate_videoclips, CompositeVideoClip
+#from moviepy.editor import AudioFileClip, CompositeAudioClip
 
 
 def create_final_video(images, voiceover_path, bgm_path, output_path="shorts/final_video.mp4"):
