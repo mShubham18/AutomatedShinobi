@@ -7,6 +7,17 @@ from moviepy import *
 #from moviepy.editor import ImageSequenceClip, AudioFileClip, VideoFileClip
 from tqdm import tqdm
 
+from moviepy.video.compositing.concatenate import concatenate_videoclips
+from moviepy.video.compositing.CompositeVideoClip import CompositeVideoClip
+from moviepy.audio.io.AudioFileClip import AudioFileClip
+from moviepy.audio.AudioClip import CompositeAudioClip
+from moviepy.video.VideoClip import ImageClip
+from moviepy.video.fx import all as vfx
+from moviepy.audio.fx.all import volumex
+from moviepy.video.io.VideoFileClip import VideoFileClip
+from moviepy.video.io.ImageSequenceClip import ImageSequenceClip
+
+
 FONT = cv2.FONT_HERSHEY_TRIPLEX
 FONT_SCALE = 1.1
 FONT_THICKNESS = 2
