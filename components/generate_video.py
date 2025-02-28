@@ -23,7 +23,7 @@ from moviepy.audio.io.AudioFileClip import AudioFileClip
 from moviepy.audio.AudioClip import CompositeAudioClip
 from moviepy.video.VideoClip import ImageClip
 from moviepy.video.fx import all as vfx
-
+from moviepy.audio.fx.all import volumex
 
 """from moviepy.config import change_settings
 
@@ -91,7 +91,8 @@ def process_audio(voiceover_path, bgm_path):
     Load the voiceover and background music and mix them properly.
     """
     voiceover = AudioFileClip(voiceover_path)
-    bgm = AudioFileClip(bgm_path).subclip(0, voiceover.duration).volumex(0.4)  # Reduce BGM volume
+    #bgm = AudioFileClip(bgm_path).subclip(0, voiceover.duration).volumex(0.4)  # Reduce BGM volume
+    bgm = AudioFileClip(bgm_path).subclip(0, voiceover.duration).fx(volumex, 0.4)
 
     final_audio = CompositeAudioClip([voiceover, bgm])
     return final_audio
