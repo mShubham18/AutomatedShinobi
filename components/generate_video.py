@@ -5,7 +5,7 @@ import tempfile
 import cv2
 import numpy as np
 #from moviepy.editor import ImageClip
-os.environ["IMAGEMAGICK_BINARY"] = "/usr/bin/magick"
+#os.environ["IMAGEMAGICK_BINARY"] = "/usr/bin/magick"
 from moviepy import *
 
 """from moviepy.config import change_settings
@@ -59,7 +59,7 @@ def process_images(image_list, voiceover_duration, max_duration_per_image=4):
     return clips
 
 
-from moviepy.editor import AudioFileClip, CompositeAudioClip
+#from moviepy.editor import AudioFileClip, CompositeAudioClip
 
 
 def process_audio(voiceover_path, bgm_path):
