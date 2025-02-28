@@ -21,7 +21,8 @@ from moviepy.video.compositing.concatenate import concatenate_videoclips
 from moviepy.video.compositing.CompositeVideoClip import CompositeVideoClip
 from moviepy.audio.io.AudioFileClip import AudioFileClip
 from moviepy.audio.AudioClip import CompositeAudioClip
-from moviepy.video.VideoClip import ImageClip,vfx
+from moviepy.video.VideoClip import ImageClip
+from moviepy.video.fx import all as vfx
 
 
 """from moviepy.config import change_settings
