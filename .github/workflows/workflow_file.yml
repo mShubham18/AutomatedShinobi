@@ -38,8 +38,8 @@ jobs:
 
       - name: Set ImageMagick Path
         run: |
-          echo "IMAGEMAGICK_BINARY=/usr/bin/magick" >> $GITHUB_ENV
-          export IMAGEMAGICK_BINARY=/usr/bin/magick
+          echo "IMAGEMAGICK_BINARY=/usr/bin/convert" >> $GITHUB_ENV
+          export IMAGEMAGICK_BINARY=/usr/bin/convert
 
       - name: Run the script
         run: python app.py
