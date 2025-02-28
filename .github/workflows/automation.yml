@@ -3,7 +3,7 @@ name: Run app.py with cron job
 on:
   schedule:
     - cron: '0 12 * * *'  # Runs every day at 12 PM UTC
-  workflow_dispatch:  # Allows manual triggering
+  workflow_dispatch:
 
 jobs:
   run-script:
@@ -34,7 +34,7 @@ jobs:
           convert -version
       
       - name: Ensure Required Directories Exist
-        run: mkdir -p outputs shorts  # Create both folders if they don't exist
+        run: mkdir -p outputs shorts
 
       - name: Set ImageMagick Path
         run: |
@@ -62,5 +62,5 @@ jobs:
           YT_REFRESH_TOKEN: ${{ secrets.YT_REFRESH_TOKEN }}
       
       - name: Clean up Generated Directories
-        if: always()  # Ensures cleanup even if the script fails
-        run: rm -rf outputs shorts  # Delete both folders after execution
+        if: always()
+        run: rm -rf outputs shorts
