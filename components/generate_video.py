@@ -21,7 +21,7 @@ from moviepy.video.compositing.concatenate import concatenate_videoclips
 from moviepy.video.compositing.CompositeVideoClip import CompositeVideoClip
 from moviepy.audio.io.AudioFileClip import AudioFileClip
 from moviepy.audio.AudioClip import CompositeAudioClip
-from moviepy.video.VideoClip import ImageClip
+from moviepy.video.VideoClip import ImageClip,vfx
 
 
 """from moviepy.config import change_settings
@@ -68,7 +68,14 @@ def process_images(image_list, voiceover_duration, max_duration_per_image=4):
             continue
 
         # ✅ Apply a zoom-out effect (slight scale change)
-        clip = ImageClip(temp_file.name).set_duration(max_duration_per_image).resize(lambda t: 1 + 0.05 * t)
+        #clip = ImageClip(temp_file.name).set_duration(max_duration_per_image).resize(lambda t: 1 + 0.05 * t)
+
+        clip = (
+            ImageClip(temp_file.name)
+            .set_duration(max_duration_per_image)
+            .fx(vfx.resize, lambda t: 1 + 0.05 * t)  # Apply dynamic resizing
+            )
+        
 
         clips.append(clip)
 
