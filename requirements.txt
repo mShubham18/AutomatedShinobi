@@ -3,7 +3,7 @@ pandas
 google-generativeai
 python-dotenv  # For managing environment variables
 duckduckgo_search
-whisper
+openai-whisper
 opencv-python-headless  # Optimized for servers (instead of opencv-python)
 moviepy==1.0.3
 tqdm
