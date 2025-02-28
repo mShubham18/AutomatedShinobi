@@ -26,7 +26,7 @@ jobs:
         run: |
           sudo apt update
           sudo apt install -y ffmpeg imagemagick
-          echo "IMAGEMAGICK_BINARY=/usr/bin/magick" >> $GITHUB_ENV  # Fix ImageMagick path
+          echo "IMAGEMAGICK_BINARY=/usr/bin/convert" >> $GITHUB_ENV  # Fix ImageMagick path
 
       - name: Verify ImageMagick Installation
         run: |
@@ -35,7 +35,7 @@ jobs:
       
       - name: Ensure Required Directories Exist
         run: mkdir -p outputs shorts  # Create both folders if they don't exist
-        
+
       - name: Set ImageMagick Path
         run: |
           echo "IMAGEMAGICK_BINARY=/usr/bin/magick" >> $GITHUB_ENV
