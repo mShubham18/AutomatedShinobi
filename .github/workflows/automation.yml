@@ -1,4 +1,4 @@
-name: Run app.py with cron job
+name: Initiate Short Generation
 
 on:
   schedule:
